@@ -21,7 +21,7 @@ function Invoice() {
   const [clientDetails, setClientDetails] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
   const [LRNO, setLRNO] = useState(null);
-  const baseURL = 'http://localhost:4000';
+  const baseURL = 'https://invoice-api-2ldk.onrender.com';
   useEffect(() => {
     // Fetch clients data using Axios
     axios.get(`${baseURL}/clients`)
