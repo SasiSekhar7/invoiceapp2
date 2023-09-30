@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function ClientManagement() {
   // State variables
-  const baseURL = 'https://invoiceapp2-api.onrender.com';
+  const baseURL = 'https://invoice-api-2ldk.onrender.com';
   const [clients, setClients] = useState([]);
   const [newClient, setNewClient] = useState({
     shopName: '',
