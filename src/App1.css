@@ -1,0 +1,272 @@
+/* App.css */
+@font-face {
+  font-family: 'CustomFonty';
+  src: url('../public/Sunset-DemiBold Regular.ttf') format('ttf'),
+       url('../public/Sunset-DemiBold Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #f5f5f5; /* Set your desired background color */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.app-title {
+  color: #333;
+  font-family: 'CustomFonty', sans-serif;
+  font-size: 40px;
+
+}
+
+ .sectione {
+  margin: 20px 0; /* Example margin */
+  padding: 20px; /* Example padding */
+  border: 1px solid #ccc; /* Example border */
+  display: flex; /* Example display */
+  justify-content: space-between; /* Example alignment */
+  align-items: center;
+}  
+.section {
+  margin: 20px 0; /* Adjust the margin for spacing between sections */
+  padding: 20px; /* Adjust the padding within each section */
+  border: 1px solid #ccc; /* Example border for each section */
+  display: flex; /* Use flex layout for better alignment */
+  flex-direction: row; /* Stack content vertically within each section */
+  align-items: center; /* Align content to the left within each section */
+  max-width: 800px; 
+  justify-content: space-between;/* Limit the maximum width of each section */
+}
+.add-invoice-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.add-invoice-button:hover {
+  background-color: #0056b3;
+}
+.add-book-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.add-book-button:hover {
+  background-color: #0056b3;
+}
+
+
+.download-pdf-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.download-pdf-button:hover {
+  background-color: #218838;
+}
+.react-select {
+  width: 250px;
+  margin-top: 5px ;
+ /* Adjust the width as needed */
+}
+.react-select-big {
+  width: 450px;
+  margin-top: 5px ;
+ /* Adjust the width as needed */
+}
+.input-fields {
+  width: 50px;
+  height: 30px; /* Adjust the width as needed */
+}
+.input-fields-reg {
+  width: 200px;
+  height: 30px; /* Adjust the width as needed */
+}
+.input-fields-date {
+  width: 75px;
+  height: 30px; 
+  align-items: center;/* Adjust the width as needed */
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure the container takes at least the viewport height */
+  background-color: #f0f0f0; /* Set a background color for the entire page */
+}
+/* Add more styling rules for other components as needed */
+/* styles.css */
+.navbar {
+ /* Change the background color as needed */
+  color: black; /* Text color for buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px; /* Adjust padding as needed */
+}
+
+.navbar-title {
+  font-size: 35px;
+  text-align: center; 
+  font-family: 'Bebas Neue', sans-serif;/* Adjust font size as needed */
+}
+
+.navbar-button {
+  background-color: #555; /* Button background color */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; /* Adjust font size as needed */
+  margin: 5px 10px; /* Adjust margins as needed */
+  cursor: pointer;
+}
+
+.navbar-button:hover {
+  background-color: #777; /* Change button color on hover */
+}
+/* Add these styles to your CSS */
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.action-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+/* common.css */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.add-button,
+.cancel-button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
+/* common.css */
+.search-container {
+ 
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+.edit-form {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.save-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}

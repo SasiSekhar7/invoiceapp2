@@ -1,0 +1,37 @@
+/* App.css */
+/* ... (Other styles) */
+
+.selected-books {
+    margin-top: 20px;
+  }
+  
+  .book-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .book-table th,
+  .book-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .book-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .add-invoice-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-invoice-button:hover {
+    background-color: #0056b3;
+  }
+  
