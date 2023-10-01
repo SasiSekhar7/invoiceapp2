@@ -3,7 +3,6 @@ import Select from 'react-select';
 import './App1.css';
 import generateInvoice from './InvoiceTemplate3';
 import SelectedBooksTable from './SelectedBooksTable';
-import InvoicesList from './InvoicesList';
 import axios from 'axios';
 function Invoice() {
   const [selectedClient, setSelectedClient] = useState(null);
@@ -17,7 +16,6 @@ function Invoice() {
   const [clients, setClients] = useState([]);
   const [booksData, setBooksData] = useState([]);
   const [transporters, setTransporters] = useState([]);
-  const [books, setBooks] = useState([]);
   const [clientDetails, setClientDetails] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
   const [LRNO, setLRNO] = useState(null);
@@ -93,21 +91,18 @@ function Invoice() {
     }
   };
 
-  const calculateTotalAmount = (selectedBooks) => {
-    return selectedBooks.reduce(
-      (acc, book) => acc + book.quantity * book.rate * book.book.bundleQuantity,
-      0
-    );
+  const clearForm = () => {
+    setSelectedClient(null);
+    setSelectedTransporter(null);
+    setLRNO('');
+    setSelectedBooks([]);
+    setSelectedBook(null);
+    setQuantity(0);
+    setBundleQuantity(0);
+    setRate(0);
+    setClientDetails(null);
   };
-
-  const addInvoice = () => {
-    if (selectedClient && selectedBooks.length > 0) {
-      const total = calculateTotalAmount(selectedBooks);
-      setBooks([...books, { client: selectedClient['shopName'], books: selectedBooks, total }]);
-      setSelectedClient(null);
-      setSelectedBooks([]);
-    }
-  };
+  
   const downloadPdf = () => {
     if (selectedClient && selectedBooks.length > 0) {
       const invoiceDoc = generateInvoice(selectedClient, selectedBooks, selectedTransporter, packagingRate,selectedDate,LRNO);
@@ -220,12 +215,10 @@ function Invoice() {
       {selectedBooks.length > 0 && (
         <SelectedBooksTable selectedBooks={selectedBooks}onDeleteBook={deleteBook} />
       )}
-      <button className="add-invoice-button" onClick={addInvoice}>
-        Add Invoice
+      <button className="download-pdf-button" onClick={downloadPdf}>Download PDF</button> 
+      <button className="add-invoice-button" onClick={clearForm}>
+        Clear Form
       </button>
-      <button className="download-pdf-button" onClick={downloadPdf}>Download PDF Invoice</button> 
-    
-      <InvoicesList books={books} />
     </div>
     </div>
   );
