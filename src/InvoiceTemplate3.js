@@ -62,7 +62,7 @@ const generateInvoice = (client, books, transporter, packaging,date,LRNO) => {
   ]);
   let additionalFee = 80;
   let additionalFeeAmount =0;
-  if (transporter['name'] === 'G V R' || transporter['name'] === 'CHENNUPATTI CARGO SERVICES') {
+  if (transporter['name'] === 'GVR' || transporter['name'] === 'CHENNUPATTI CARGO SERVICES') {
 
     additionalFeeAmount = additionalFee * calculateTotalQuantity(books);
     tableData.push(['', `${transporter['name']}`, `${calculateTotalQuantity(books)}`, additionalFee.toString(), additionalFeeAmount.toString()]);
