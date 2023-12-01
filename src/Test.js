@@ -19,6 +19,8 @@ function Invoice() {
   const [clientDetails, setClientDetails] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
   const [LRNO, setLRNO] = useState(null);
+  const [serialNumber, setSerialNumber] = useState(1);
+  const [manualSerialNumber, setManualSerialNumber] = useState('');
   const baseURL = 'https://invoice-api-2ldk.onrender.com';
   useEffect(() => {
     // Fetch clients data using Axios
@@ -48,7 +50,11 @@ function Invoice() {
         console.error('Error fetching transporters:', error);
       });
   }, []);
-  
+
+  useEffect(() => {
+    // Reset serial number to 1 when the date changes (new day)
+    setSerialNumber(1);
+  }, [selectedDate]);
   useEffect(() => {
     const currentDate = new Date();
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${
@@ -102,14 +108,34 @@ function Invoice() {
     setRate(0);
     setClientDetails(null);
   };
-  
+  const handleManualSerialNumberChange = (e) => {
+    setManualSerialNumber(e.target.value);
+    // Clear serial number when manually entering a new number
+    setSerialNumber(1);
+  };
+
   const downloadPdf = () => {
     if (selectedClient && selectedBooks.length > 0) {
-      const invoiceDoc = generateInvoice(selectedClient, selectedBooks, selectedTransporter, packagingRate,selectedDate,LRNO);
-      invoiceDoc.save(`${selectedClient['shopName']}.pdf`);
-      console.log(selectedClient)
+      const effectiveSerialNumber = manualSerialNumber ? parseInt(manualSerialNumber) : serialNumber;
+
+      const invoiceDoc = generateInvoice(
+        selectedClient,
+        selectedBooks,
+        selectedTransporter,
+        packagingRate,
+        selectedDate,
+        LRNO,
+        effectiveSerialNumber
+      );
+
+      invoiceDoc.save(`${selectedClient['shopName']}_Invoice_${effectiveSerialNumber}.pdf`);
+
+      if (!manualSerialNumber) {
+        setSerialNumber((prevSerialNumber) => prevSerialNumber + 1); // Increment serial number
+      }
     }
-  }
+  };
+
   const deleteBook = (index) => {
     const updatedBooks = [...selectedBooks];
     updatedBooks.splice(index, 1);
@@ -130,6 +156,16 @@ function Invoice() {
             onChange={(e) => setSelectedDate(e.target.value)}
           />
         </div>
+        <div className="input-fields-date">
+          <input
+            className='input-fields-date'
+            type="number"
+            placeholder="Serial Number"
+            value={manualSerialNumber !== '' ? manualSerialNumber : serialNumber}
+            onChange={handleManualSerialNumberChange}
+          />
+        </div>
+
       <div className="section">
         <h2>Select a Client:</h2>
         <Select

@@ -2,7 +2,8 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import callAddFont from './sunsetfont';
 
-const generateInvoice = (client, books, transporter, packaging,date,LRNO) => {
+const generateInvoice = (client, books, transporter, packaging,date,LRNO,srno) => {
+  console.log(books)
   const doc = new jsPDF();
 
   const drawCommonElements = () => {
@@ -28,19 +29,18 @@ const generateInvoice = (client, books, transporter, packaging,date,LRNO) => {
     doc.text('+91 94415 44936, +91 99511 47195', 105, 52, { align: 'center' });
 
     doc.setFontSize(12);
+    doc.text(`Serial No.${srno}`, 160, 54);
     doc.text(`Date: ${date}`, 154, 59);
     doc.text(`${client['AGENT']} / ${client['booktype']} `,20,59)
-
     doc.line(17, 63, 193, 63);
-    //console.log(client['shopName'])
     doc.setFontSize(14);
-   //doc.text(`${client['Name']},`, 14, 65);
     doc.setFont('helvetica', 'bold');
     doc.text(`${client['shopName']}`, 20, 70);
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
-    doc.text(`${client['ADRESS']}, ${client['CITY']}, ${client['district']}, ${client['pin']}`,20,77);
-    doc.text(`${client['mobile']}`, 20, 83);
+    doc.text(`${client['ADRESS']}, ${client['CITY']}, ${client['district']}`,20,77);
+    doc.text(`${client['pin']}`, 20, 82); 
+    doc.text(`PH.NO.${client['mobile']}`, 20, 87);
     doc.setFontSize(10);
     doc.text('GOODS ONCE SOLD CANNOT BE TAKEN BACK', doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 13, {
       align: 'center',
@@ -56,9 +56,9 @@ const generateInvoice = (client, books, transporter, packaging,date,LRNO) => {
   const tableData = books.map((book) => [
     book.quantity.toString(),
     book.book['name'],
-    (book.quantity * book.book['bundleQuantity']),
+    (book.quantity * book['bundleQuantity']),
     book['rate'].toString(),
-    (book.quantity * book['rate'] * book.book['bundleQuantity']).toLocaleString('en-IN'),
+    (book.quantity * book['rate'] * book['bundleQuantity']).toLocaleString('en-IN'),
   ]);
   let additionalFee = 80;
   let additionalFeeAmount =0;
